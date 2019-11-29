@@ -8,3 +8,7 @@ export class Horario {
     parc: string;    		
     tomou: boolean;
 }
+function somaHora(hora: Date, intervalo: number){
+    hora.setHours(hora.getHours()+intervalo);
+    return hora; 
+  }

@@ -10,28 +10,34 @@ export class HorarioService {
 
   constructor(private db: DatabaseService) { }
 
+  somaHora(hora: Date, intervalo: number){
+    hora.setHours(hora.getHours()+intervalo);
+    return hora; 
+  }
   
   transformaHorarioListaInserir(item: Horario){
     const horarios: Horario[] = [];
     let nroCiclo =  1;
     let parcela = 1;
     const numeroParcelas =  (item.qtdeDias*(24/item.periodo));
-    var novaHora = new Date(item.hora);
+    //let novaHora = new Date(item.hora);
+    let novaHora = moment(new Date(item.hora));
+
     for (let i = 0; i < item.qtdeDias; i++) {
       const intervalo =   (24/item.periodo);    
       for (let x = 0; x < intervalo; x++) {
+        console.log(novaHora.toDate());
         const horario = new Horario();
         horario.descricao = item.descricao;     
         horario.qtdeDias = item.qtdeDias;  
         horario.periodo = item.periodo;  
-        horario.hora = item.hora;     
+        horario.hora = novaHora.toDate();     
         horario.ciclo = nroCiclo;     
         horario.parc = parcela+"/"+numeroParcelas;     
         horario.tomou = item.tomou;
         horarios.push(horario);
         parcela++;
-        novaHora.setHours(novaHora.getTime()+horario.periodo);
-        console.log(horario);
+        novaHora.add(item.periodo, 'h');
       }
       nroCiclo++;
     }
