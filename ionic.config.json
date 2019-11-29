@@ -1,5 +1,7 @@
 {
   "name": "jaTomeiRemedio",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

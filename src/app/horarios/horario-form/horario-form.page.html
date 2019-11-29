@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button slot="start">
+        <ion-back-button></ion-back-button>
+    </ion-button>  
+    <ion-title>{{ title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-label position="stacked">Descrição</ion-label>
+      <ion-input autocapitalize="on" [(ngModel)]="horario.descricao" name="descricao"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label position="stacked">Quantidade de dias</ion-label>
+        <ion-input type="number" required="true" clearInput=true min="0" max="5" [(ngModel)]="horario.qtdeDias" name="qtdeDias"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label position="stacked">Intervalo</ion-label>
+        <ion-select [(ngModel)]="horario.periodo" name="periodo" placeholder="Selecione">
+          <ion-select-option value=1>1/1 hora</ion-select-option>
+          <ion-select-option value=2>2/2 horas</ion-select-option>
+          <ion-select-option value=3>3/3 horas</ion-select-option>
+          <ion-select-option value=4>4/4 horas</ion-select-option>
+          <ion-select-option value=6>6/6 horas</ion-select-option>
+          <ion-select-option value=8>8/8 horas</ion-select-option>
+          <ion-select-option value=12>12/12 horas</ion-select-option>
+          <ion-select-option value=24>24/24 horas</ion-select-option>
+        </ion-select>
+    </ion-item>
+    <ion-item>
+        <ion-label position="stacked">Date e hora inicio</ion-label>
+        <ion-datetime displayFormat="DD MMM, YYYY HH:mm" [(ngModel)]="horario.hora" name="hora"></ion-datetime>
+    </ion-item>
+    <ion-item>
+        <ion-label>Tomou</ion-label>
+        <ion-toggle [(ngModel)]="horario.tomou" name="tomou"></ion-toggle>
+    </ion-item>
+    <div class="ion-margin-vertical">
+      <ion-button type="submit" color="secondary" expand="block">Salvar</ion-button>
+    </div>
+  </form>
+</ion-content>

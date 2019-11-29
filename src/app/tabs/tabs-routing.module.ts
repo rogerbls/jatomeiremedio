@@ -2,51 +2,43 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
 
+
 const routes: Routes = [
   {
     path: 'tabs',
     component: TabsPage,
     children: [
       {
-        path: 'tab1',
+        path: 'naotomou',
         children: [
           {
             path: '',
-            loadChildren: () =>
-              import('../tab1/tab1.module').then(m => m.Tab1PageModule)
-          }
-        ]
+            loadChildren: () => 
+              import('../horarios/horario-listnaotomou/horario-listnaotomou.module').then( m => m.HorarioListnaotomouPageModule),
+            }
+          ]
       },
       {
-        path: 'tab2',
+        path: 'jatomou',
         children: [
           {
             path: '',
             loadChildren: () =>
-              import('../tab2/tab2.module').then(m => m.Tab2PageModule)
+            import('../horarios/horario-listtomou/horario-listtomou.module').then( m => m.HorarioListtomouPageModule),
           }
         ]
       },
-      {
-        path: 'tab3',
-        children: [
-          {
-            path: '',
-            loadChildren: () =>
-              import('../tab3/tab3.module').then(m => m.Tab3PageModule)
-          }
-        ]
-      },
+      
       {
         path: '',
-        redirectTo: '/tabs/tab1',
+        redirectTo: '/tabs/naotomou',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/tab1',
+    redirectTo: '/tabs/naotomou',
     pathMatch: 'full'
   }
 ];
