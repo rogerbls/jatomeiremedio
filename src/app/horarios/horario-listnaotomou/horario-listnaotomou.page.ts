@@ -22,16 +22,11 @@ export class HorarioListnaotomouPage implements OnInit, OnDestroy {
   ngOnInit() {
   }
   
-  ionViewDidEnter () {
-    console.log("ionViewDidEnter ");
+  ionViewWillEnter () {
+    console.log("ionViewWillEnter ");
     this.loadHorariosNaoTomados();  
   }
-  ngAfterViewInit() {
-    console.log("ngAfterViewInit");
-    this.loadHorariosNaoTomados();  
-  }
-
-  ngOnDestroy(): void {
+  ngOnDestroy() {
     console.log('ngOnDestroy');
   }
   async loadHorariosNaoTomados() {
